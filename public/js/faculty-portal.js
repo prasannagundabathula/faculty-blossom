@@ -1793,12 +1793,18 @@
 
         <form id="facultyProfileForm">
           <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px; padding:16px; background:#F8FAFC; border-radius:10px; border:1px solid #E2E8F0;">
-            <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" style="width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);">
+            ${window.BVCITSPhotos.imgTag(user, '', 'width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);', 'id="facultyProfilePhoto"')}
             <div>
               <h3 style="margin:0; font-size:18px; color:var(--portal-maroon);">${user.fullName}</h3>
               <div style="font-size:13px; color:#64748B;">Employee ID: <strong>${user.employeeId || 'FAC001'}</strong> · ${user.designation} (${user.department})</div>
+              <div style="font-size:12px; color:#64748B; margin-top:2px;">${user.email}</div>
+              <div style="margin-top:8px;">
+                <label for="facultyPhotoInput" class="portal-btn outline sm" style="cursor:pointer; font-size:11px; padding:6px 10px;">📷 Change Photo</label>
+                <input type="file" id="facultyPhotoInput" accept="image/*" style="display:none;">
+              </div>
             </div>
           </div>
+
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
             <div>
