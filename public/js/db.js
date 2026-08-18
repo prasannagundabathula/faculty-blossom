@@ -1435,6 +1435,17 @@
       this.saveDatabase();
       return user;
     }
+
+    // Stores an uploaded profile photo (data URL) against ONE specific user id,
+    // so every account keeps its own photo across refreshes.
+    updateUserPhoto(userId, dataUrl) {
+      const user = this.getUserById(userId);
+      if (!user) return null;
+      user.photoData = dataUrl;
+      this.saveDatabase();
+      return user;
+    }
+
   }
 
   // Attach singleton to window
