@@ -548,7 +548,7 @@
           <tr>
             <td>
               <div style="display:flex; align-items:center; gap:10px;">
-                <img src="${st.avatar || 'images/bvcits_seal.jpg'}" alt="${st.fullName}" style="width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid #CBD5E1;">
+                ${window.BVCITSPhotos.imgTag(st, '', 'width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid #CBD5E1;')}
                 <div>
                   <strong>${st.fullName}</strong>
                   <div style="font-size:11.5px; color:#64748B;">${st.email}</div>
@@ -601,7 +601,7 @@
       <div class="faculty-modal-content">
         <div class="faculty-modal-header">
           <div style="display:flex; align-items:center; gap:12px;">
-            <img src="${st.avatar || 'images/bvcits_seal.jpg'}" alt="${st.fullName}" style="width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);">
+            ${window.BVCITSPhotos.imgTag(st, '', 'width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);')}
             <div>
               <h3>${st.fullName} — ${st.rollNo}</h3>
               <span style="font-size:12px; color:#64748B;">${st.program} · ${st.year} (${st.section})</span>
@@ -811,7 +811,7 @@
                   <td><strong>${st.rollNo}</strong></td>
                   <td>
                     <div style="display:flex; align-items:center; gap:8px;">
-                      <img src="${st.avatar || 'images/bvcits_seal.jpg'}" alt="${st.fullName}" style="width:28px; height:28px; border-radius:50%; object-fit:cover;">
+                      ${window.BVCITSPhotos.imgTag(st, '', 'width:28px; height:28px; border-radius:50%; object-fit:cover;')}
                       <span>${st.fullName}</span>
                     </div>
                   </td>
