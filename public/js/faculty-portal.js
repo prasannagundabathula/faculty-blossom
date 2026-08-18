@@ -166,7 +166,7 @@
       <!-- Top Faculty Profile Banner -->
       <div class="dashboard-hero-banner">
         <div class="hero-student-profile">
-          <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" class="hero-avatar">
+          ${window.BVCITSPhotos.imgTag(user, 'hero-avatar')}
           <div class="hero-profile-meta">
             <h2>Faculty Portal — ${user.fullName}</h2>
             <div class="hero-tags-row">
