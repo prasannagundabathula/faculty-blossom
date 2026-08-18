@@ -1083,7 +1083,21 @@
       try {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
-          return JSON.parse(saved);
+          const parsed = JSON.parse(saved);
+          // Migration: older saved databases were created before the faculty
+          // modules existed, so top-level collections such as assignments,
+          // exams, submissions, announcements and facultyNotifications were
+          // missing entirely — which made those views render empty.
+          let patched = false;
+          Object.keys(defaultDatabase).forEach(key => {
+            if (parsed[key] === undefined || parsed[key] === null) {
+              parsed[key] = defaultDatabase[key];
+              patched = true;
+            }
+          });
+          this.data = parsed;
+          if (patched) this.saveDatabase(parsed);
+          return parsed;
         }
       } catch (e) {
         console.warn('Error reading from localStorage:', e);
@@ -1091,6 +1105,7 @@
       this.saveDatabase(defaultDatabase);
       return defaultDatabase;
     }
+
 
     saveDatabase(newData) {
       if (newData) this.data = newData;
