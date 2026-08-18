@@ -53,6 +53,12 @@
     const roleEl = document.getElementById('topbarUserRole');
     if (nameEl) nameEl.textContent = user.fullName;
     if (roleEl) roleEl.textContent = `${user.designation || 'Faculty'} (${user.department || 'CSE'})`;
+    const topAvatar = document.querySelector('.topbar-user .user-avatar');
+    if (topAvatar) {
+      topAvatar.src = window.BVCITSPhotos.resolve(user);
+      topAvatar.onerror = () => window.BVCITSPhotos.handleError(topAvatar, window.BVCITSPhotos.fallbackChain(user));
+    }
+
 
     // Mobile Sidebar Toggle
     const mobileBtn = document.getElementById('mobileSidebarToggle');
