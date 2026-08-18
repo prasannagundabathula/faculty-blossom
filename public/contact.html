@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Location Map — BVCITS Amalapuram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="wrap">
+      <div class="top-bar-left">
+        <span class="top-badge">EAMCET CODE: BVTS</span>
+        <span>Admissions Open 2026–27 | NAAC 'A' Grade · NBA Accredited · Autonomous</span>
+      </div>
+      <div class="top-bar-right">
+        <span>📞 Helpline: <strong>+91 99854 22678</strong></span>
+        <a href="contact.html">📍 Batlapalem, Amalapuram, E.G. Dist.</a>
+      </div>
+    </div>
+  </div>
+
+  <header id="mainHeader">
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <div class="brand-seal-wrap">
+          <img src="images/bvcits_seal.jpg" alt="BVCITS Logo">
+        </div>
+        <div class="brand-text">
+          <div class="name">BVCITS</div>
+          <div class="sub">Autonomous · Amalapuram</div>
+        </div>
+      </a>
+      
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="departments.html">Departments</a>
+        <a href="campus-life.html">Campus Life</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="placements.html">Placements</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="testimonials.html">Voices</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cta-btn" id="navLoginBtn">Portal Login</button>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section style="background:linear-gradient(135deg, #530C15 0%, #7A1220 100%); color:#fff; padding:64px 0 48px; border-bottom:3px solid var(--gold);">
+    <div class="wrap">
+      <span class="eyebrow gold">Reach Out</span>
+      <h1 class="display" style="color:#fff; font-size:44px; margin-top:6px;">Contact &amp; Location Map</h1>
+      <p style="color:#D8CBB8; font-size:16px; max-width:640px; margin-top:10px;">
+        Connect with our Admissions Office, Administrative Helpdesk, or visit our green delta campus in Batlapalem, Amalapuram.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" style="padding:64px 0;">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-card-box">
+          <div class="contact-item">
+            <div class="lbl">Campus Address</div>
+            <div class="val">Bonam Venkata Chalamayya Institute of Technology &amp; Science (BVCITS), Batlapalem, Amalapuram, East Godavari District, Andhra Pradesh — 533201</div>
+          </div>
+          <div class="contact-item">
+            <div class="lbl">Admissions Helpline</div>
+            <div class="val"><strong>+91 99854 22678</strong> / +91 8856 278345</div>
+          </div>
+          <div class="contact-item">
+            <div class="lbl">Official Email</div>
+            <div class="val">admissions@bvcits.edu.in / principal@bvcits.edu.in</div>
+          </div>
+          <div class="contact-item">
+            <div class="lbl">Office Working Hours</div>
+            <div class="val">Monday – Saturday: 9:00 AM – 5:00 PM (IST)</div>
+          </div>
+        </div>
+
+        <div class="map-embed-card">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.4284837482833!2d81.9961623758832!3d16.65541812350711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37e51086665725%3A0xe54e3fe72ee78680!2sBVC%20Institute%20of%20Technology%20and%20Science!5e0!3m2!1sen!2sin!4v1723651234567!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="BVCITS Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 BVCITS, Amalapuram. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-veil" id="veil">
+    <div class="modal">
+      <button class="close" id="modalCloseBtn">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

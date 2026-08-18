@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery — BVCITS Amalapuram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="wrap">
+      <div class="top-bar-left">
+        <span class="top-badge">EAMCET CODE: BVTS</span>
+        <span>Admissions Open 2026–27 | NAAC 'A' Grade · NBA Accredited · Autonomous</span>
+      </div>
+      <div class="top-bar-right">
+        <span>📞 Helpline: <strong>+91 99854 22678</strong></span>
+        <a href="contact.html">📍 Batlapalem, Amalapuram, E.G. Dist.</a>
+      </div>
+    </div>
+  </div>
+
+  <header id="mainHeader">
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <div class="brand-seal-wrap">
+          <img src="images/bvcits_seal.jpg" alt="BVCITS Logo">
+        </div>
+        <div class="brand-text">
+          <div class="name">BVCITS</div>
+          <div class="sub">Autonomous · Amalapuram</div>
+        </div>
+      </a>
+      
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="departments.html">Departments</a>
+        <a href="campus-life.html">Campus Life</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="placements.html">Placements</a>
+        <a class="active" href="gallery.html">Gallery</a>
+        <a href="testimonials.html">Voices</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cta-btn" id="navLoginBtn">Portal Login</button>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section style="background:linear-gradient(135deg, #530C15 0%, #7A1220 100%); color:#fff; padding:64px 0 48px; border-bottom:3px solid var(--gold);">
+    <div class="wrap">
+      <span class="eyebrow gold">Visual Tour</span>
+      <h1 class="display" style="color:#fff; font-size:44px; margin-top:6px;">Campus Life &amp; Highlights Gallery</h1>
+      <p style="color:#D8CBB8; font-size:16px; max-width:640px; margin-top:10px;">
+        High-resolution visual archives of BVCITS campus landmarks, laboratory testbeds, student hackathons, and placement celebrations.
+      </p>
+    </div>
+  </section>
+
+  <section class="gallery-section" style="padding:64px 0;">
+    <div class="wrap">
+      <div class="gallery-filter-bar">
+        <button class="gallery-filter-btn active" data-filter="all">All Photos</button>
+        <button class="gallery-filter-btn" data-filter="campus">Campus &amp; Aerial</button>
+        <button class="gallery-filter-btn" data-filter="academics">Student Achievers</button>
+        <button class="gallery-filter-btn" data-filter="placements">Placements</button>
+        <button class="gallery-filter-btn" data-filter="life">Campus Life</button>
+      </div>
+
+      <div class="modern-gallery-grid">
+        <div class="gallery-item span-2" data-category="campus">
+          <img src="images/campus_aerial_100percent.jpg" alt="100% EAPCET Admissions Aerial View">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">100% AP EAPCET Admissions 2026 — Aerial Campus View</div>
+            <div class="gallery-overlay-sub">BVCITS Batlapalem, Amalapuram at Sunset</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="academics">
+          <img src="images/cse_code_build_impact.jpg" alt="CSE Code Build Impact">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Code. Build. Impact.</div>
+            <div class="gallery-overlay-sub">Computer Science &amp; Engineering Department</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="placements">
+          <img src="images/tcs_achievers_7lpa.jpg" alt="TCS Achievers 7.09 LPA">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">TCS Achievers — 7.09 LPA Package</div>
+            <div class="gallery-overlay-sub">#2026_Placements G Ratnaraju &amp; G Meenakshi</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="academics">
+          <img src="images/achievers_students.jpg" alt="Student Achievers">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Student Leaders in Formal Blazers</div>
+            <div class="gallery-overlay-sub">Main Administrative Block with Glass Facade</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="life">
+          <img src="images/campus_life_walkway.jpg" alt="Students in Campus Walkway">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Lush Delta Campus Gardens</div>
+            <div class="gallery-overlay-sub">Students along the blooming floral walkways</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Lightbox -->
+  <div class="lightbox-veil" id="lightboxVeil">
+    <div class="lightbox-container">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev">❮</button>
+      <img src="" alt="Gallery Lightbox" class="lightbox-img" id="lightboxImg">
+      <button class="lightbox-nav-btn lightbox-next" id="lightboxNext">❯</button>
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>© 2026 BVCITS, Amalapuram. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-veil" id="veil">
+    <div class="modal">
+      <button class="close" id="modalCloseBtn">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

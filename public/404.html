@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BVCITS — Navigating...</title>
+  <script>
+    // Intelligent client-side fallback router for Netlify & static hosts
+    (function() {
+      const pathname = window.location.pathname;
+      const clean = pathname.toLowerCase().replace(/^\/+/, '').replace(/\/+$/, '').replace(/\.html$/, '');
+      
+      const routes = {
+        '': 'index.html',
+        'home': 'index.html',
+        'about': 'about.html',
+        'achievements': 'achievements.html',
+        'departments': 'departments.html',
+        'campus-life': 'campus-life.html',
+        'faculty': 'faculty.html',
+        'placements': 'placements.html',
+        'gallery': 'gallery.html',
+        'testimonials': 'testimonials.html',
+        'contact': 'contact.html',
+        'student-dashboard': 'student-dashboard.html',
+        'portal-login': 'portal-login.html',
+        'admin-dashboard': 'admin-dashboard.html',
+        'faculty-dashboard': 'faculty-dashboard.html'
+      };
+
+      const target = routes[clean] || 'index.html';
+      window.location.replace(target + window.location.search + window.location.hash);
+    })();
+  </script>
+</head>
+<body style="font-family:'Manrope', -apple-system, sans-serif; background:#F8F5EE; color:#1E293B; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; text-align:center; padding:20px;">
+  <div style="background:#FFFFFF; border:2px solid #D9A227; border-radius:16px; padding:32px; max-width:440px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <h2 style="font-family:'Fraunces', serif; color:#7A1220; margin:0 0 8px;">BVCITS Portal</h2>
+    <p style="font-size:14px; color:#64748B; margin:0 0 16px;">Redirecting you to the requested page...</p>
+    <a href="index.html" style="display:inline-block; background:#7A1220; color:#fff; text-decoration:none; padding:10px 20px; border-radius:999px; font-weight:700; font-size:13px;">Return to Home</a>
+  </div>
+</body>
+</html>
