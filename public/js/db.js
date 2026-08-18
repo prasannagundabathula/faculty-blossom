@@ -821,9 +821,9 @@
         instructions: 'Upload PDF report and ZIP archive with unit tests',
         createdAt: '2026-08-08',
         submissions: [
-          { studentId: 'usr_meenakshi', studentName: 'G. Meenakshi', rollNo: '22H41A0512', submittedAt: '2026-08-19', marks: 10, feedback: 'Excellent layered architecture and complete JUnit coverage.' },
-          { studentId: 'usr_sailakshmi', studentName: 'K. Sai Lakshmi', rollNo: '22H41A0527', submittedAt: '2026-08-20', marks: 9, feedback: 'Good REST design; add validation for negative IDs.' },
-          { studentId: 'usr_teja', studentName: 'B. Teja', rollNo: '22H41A0534', submittedAt: '2026-08-21', marks: null, feedback: '' }
+          { studentId: 'usr_meenakshi', studentName: 'G. Meenakshi', rollNo: '22H41A0580', submittedAt: '2026-08-19', marks: 10, feedback: 'Excellent layered architecture and complete JUnit coverage.' },
+          { studentId: 'usr_sailakshmi', studentName: 'P. Sai Lakshmi', rollNo: '22H41A0512', submittedAt: '2026-08-20', marks: 9, feedback: 'Good REST design; add validation for negative IDs.' },
+          { studentId: 'usr_teja', studentName: 'K. V. Teja', rollNo: '22H41A0415', submittedAt: '2026-08-21', marks: null, feedback: '' }
         ]
       },
       {
@@ -840,8 +840,8 @@
         instructions: 'Submit handwritten scan (PDF) with SQL scripts',
         createdAt: '2026-08-12',
         submissions: [
-          { studentId: 'usr_meenakshi', studentName: 'G. Meenakshi', rollNo: '22H41A0512', submittedAt: '2026-08-26', marks: 9.5, feedback: 'Clear BCNF proof and solid EXPLAIN analysis.' },
-          { studentId: 'usr_ananya', studentName: 'P. Ananya', rollNo: '22H41A0541', submittedAt: '2026-08-27', marks: null, feedback: '' }
+          { studentId: 'usr_meenakshi', studentName: 'G. Meenakshi', rollNo: '22H41A0580', submittedAt: '2026-08-26', marks: 9.5, feedback: 'Clear BCNF proof and solid EXPLAIN analysis.' },
+          { studentId: 'usr_ananya', studentName: 'M. Ananya', rollNo: '22H41A1208', submittedAt: '2026-08-27', marks: null, feedback: '' }
         ]
       },
       {
@@ -946,8 +946,8 @@
       {
         id: 'sub_3',
         studentId: 'usr_sailakshmi',
-        studentName: 'K. Sai Lakshmi',
-        rollNo: '22H41A0527',
+        studentName: 'P. Sai Lakshmi',
+        rollNo: '22H41A0512',
         questionId: 'cq_easy_1',
         questionTitle: 'Two Sum',
         language: 'C++',
@@ -961,8 +961,8 @@
       {
         id: 'sub_4',
         studentId: 'usr_teja',
-        studentName: 'B. Teja',
-        rollNo: '22H41A0534',
+        studentName: 'K. V. Teja',
+        rollNo: '22H41A0415',
         questionId: 'cq_med_2',
         questionTitle: '0/1 Knapsack Problem',
         language: 'Java',
@@ -976,8 +976,8 @@
       {
         id: 'sub_5',
         studentId: 'usr_ananya',
-        studentName: 'P. Ananya',
-        rollNo: '22H41A0541',
+        studentName: 'M. Ananya',
+        rollNo: '22H41A1208',
         questionId: 'cq_easy_3',
         questionTitle: 'Valid Palindrome',
         language: 'JavaScript',
@@ -1030,7 +1030,7 @@
         id: 'fnotif_1',
         category: 'assignment',
         title: 'New Submission — Assignment 2 (CS503 DBMS)',
-        text: 'P. Ananya (22H41A0541) submitted "Normalization & Query Optimisation". Pending evaluation.',
+        text: 'M. Ananya (22H41A1208) submitted "Normalization & Query Optimisation". Pending evaluation.',
         time: '35 minutes ago',
         sender: 'ERP Assignment Module',
         unread: true
@@ -1039,7 +1039,7 @@
         id: 'fnotif_2',
         category: 'attendance',
         title: 'Attendance Shortage Alert — CSE-3A',
-        text: 'B. Teja (22H41A0534) has dropped to 68.4% attendance. Condonation notice must be issued before Mid-1 hall tickets.',
+        text: 'K. V. Teja (22H41A0415) has dropped to 68.4% attendance. Condonation notice must be issued before Mid-1 hall tickets.',
         time: '3 hours ago',
         sender: 'Attendance Monitoring Cell',
         unread: true
