@@ -83,8 +83,8 @@
 
     /** Persist an uploaded photo (data URL) against the user id. */
     save(userId, dataUrl) {
-      if (window.BVCITSDatabase && window.BVCITSDatabase.updateUserPhoto) {
-        window.BVCITSDatabase.updateUserPhoto(userId, dataUrl);
+      if (window.BVCITS_DB && window.BVCITS_DB.updateUserPhoto) {
+        window.BVCITS_DB.updateUserPhoto(userId, dataUrl);
       }
       // keep the active auth session copy in sync so topbar updates immediately
       try {
