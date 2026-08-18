@@ -227,7 +227,7 @@
       <div class="dashboard-hero-banner">
         <div class="hero-student-profile">
           <div class="hero-avatar-wrap">
-            <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" class="hero-avatar">
+            ${window.BVCITSPhotos.imgTag(user, 'hero-avatar')}
             <span class="online-indicator" title="Student Session Active"></span>
           </div>
           <div class="hero-profile-meta">
