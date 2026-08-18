@@ -803,7 +803,275 @@
           unread: false
         }
       ]
-    }
+    },
+
+    // ----------------- FACULTY: ASSIGNMENTS -----------------
+    assignments: [
+      {
+        id: 'asg_1',
+        title: 'Assignment 1 — Spring Boot REST Microservice',
+        subjectCode: 'CS502',
+        subjectName: 'CS502 — Advanced Java',
+        facultyId: 'usr_msrmurthy',
+        facultyName: 'Dr. M. S. R. Murthy',
+        assignedClass: 'CSE-3A',
+        dueDate: '2026-08-22',
+        maxMarks: 10,
+        description: 'Build a Spring Boot REST service exposing CRUD endpoints for a Student entity with Hibernate JPA persistence, DTO mapping and Bean Validation. Submit source with JUnit tests.',
+        instructions: 'Upload PDF report and ZIP archive with unit tests',
+        createdAt: '2026-08-08',
+        submissions: [
+          { studentId: 'usr_meenakshi', studentName: 'G. Meenakshi', rollNo: '22H41A0512', submittedAt: '2026-08-19', marks: 10, feedback: 'Excellent layered architecture and complete JUnit coverage.' },
+          { studentId: 'usr_sailakshmi', studentName: 'K. Sai Lakshmi', rollNo: '22H41A0527', submittedAt: '2026-08-20', marks: 9, feedback: 'Good REST design; add validation for negative IDs.' },
+          { studentId: 'usr_teja', studentName: 'B. Teja', rollNo: '22H41A0534', submittedAt: '2026-08-21', marks: null, feedback: '' }
+        ]
+      },
+      {
+        id: 'asg_2',
+        title: 'Assignment 2 — Normalization & Query Optimisation',
+        subjectCode: 'CS503',
+        subjectName: 'CS503 — DBMS',
+        facultyId: 'usr_msrmurthy',
+        facultyName: 'Dr. M. S. R. Murthy',
+        assignedClass: 'CSE-3A',
+        dueDate: '2026-08-29',
+        maxMarks: 10,
+        description: 'Normalize the given College ERP schema up to BCNF, justify every decomposition, and rewrite three nested queries using joins with EXPLAIN plan comparison.',
+        instructions: 'Submit handwritten scan (PDF) with SQL scripts',
+        createdAt: '2026-08-12',
+        submissions: [
+          { studentId: 'usr_meenakshi', studentName: 'G. Meenakshi', rollNo: '22H41A0512', submittedAt: '2026-08-26', marks: 9.5, feedback: 'Clear BCNF proof and solid EXPLAIN analysis.' },
+          { studentId: 'usr_ananya', studentName: 'P. Ananya', rollNo: '22H41A0541', submittedAt: '2026-08-27', marks: null, feedback: '' }
+        ]
+      },
+      {
+        id: 'asg_3',
+        title: 'Assignment 3 — Verilog HDL FSM Design',
+        subjectCode: 'EC501',
+        subjectName: 'EC501 — VLSI Design',
+        facultyId: 'usr_msrmurthy',
+        facultyName: 'Dr. B. Lakshmi Narayana',
+        assignedClass: 'ECE-3A',
+        dueDate: '2026-09-05',
+        maxMarks: 10,
+        description: 'Design a Moore FSM based traffic light controller in Verilog HDL, verify with a self-checking testbench and attach annotated timing diagrams.',
+        instructions: 'Upload .v files with waveform screenshots',
+        createdAt: '2026-08-16',
+        submissions: [
+          { studentId: 'usr_ratnaraju', studentName: 'G. Ratnaraju', rollNo: '22H41A0482', submittedAt: '2026-09-02', marks: 10, feedback: 'Perfect Verilog FSM testbench with clean timing diagrams.' }
+        ]
+      }
+    ],
+
+    // ----------------- FACULTY: EXAMINATIONS -----------------
+    exams: [
+      {
+        id: 'exam_1',
+        title: 'Autonomous Mid-1 Examination — Advanced Java',
+        subject: 'Advanced Java (CS502)',
+        department: 'CSE — Semester V',
+        date: '2026-09-02',
+        time: '10:00 AM – 11:30 AM',
+        room: 'Hall 301',
+        syllabus: 'Unit I (Collections & Generics), Unit II (JDBC & Multithreading)',
+        createdBy: 'Dr. M. S. R. Murthy'
+      },
+      {
+        id: 'exam_2',
+        title: 'Autonomous Mid-1 Examination — DBMS',
+        subject: 'Database Management Systems (CS503)',
+        department: 'CSE — Semester V',
+        date: '2026-09-03',
+        time: '10:00 AM – 11:30 AM',
+        room: 'Hall 301',
+        syllabus: 'Unit I (ER Modelling), Unit II (Relational Algebra & Normalization)',
+        createdBy: 'Dr. M. S. R. Murthy'
+      },
+      {
+        id: 'exam_3',
+        title: 'Autonomous Mid-1 Examination — VLSI Design',
+        subject: 'VLSI Design & Embedded Systems (EC501)',
+        department: 'ECE — Semester V',
+        date: '2026-09-04',
+        time: '02:00 PM – 03:30 PM',
+        room: 'Hall 208',
+        syllabus: 'Unit I (MOS Fundamentals), Unit II (Verilog HDL Modelling)',
+        createdBy: 'Dr. B. Lakshmi Narayana'
+      },
+      {
+        id: 'exam_4',
+        title: 'Semester End Practical — Operating Systems & Cloud Lab',
+        subject: 'Operating Systems & Cloud Lab (CS505)',
+        department: 'CSE — Semester V',
+        date: '2026-11-18',
+        time: '09:30 AM – 12:30 PM',
+        room: 'Cloud Computing Lab (Block C)',
+        syllabus: 'Full lab record — process scheduling, threads, Docker deployment viva',
+        createdBy: 'Dr. M. S. R. Murthy'
+      }
+    ],
+
+    // ----------------- FACULTY: CODING SUBMISSIONS -----------------
+    submissions: [
+      {
+        id: 'sub_1',
+        studentId: 'usr_meenakshi',
+        studentName: 'G. Meenakshi',
+        rollNo: '22H41A0512',
+        questionId: 'cq_med_1',
+        questionTitle: 'Longest Substring Without Repeating Characters',
+        language: 'Java',
+        status: 'Accepted',
+        score: 100,
+        executionTime: '38ms',
+        memory: '9.1 MB',
+        submittedAt: '2026-08-17 18:42',
+        studentCode: 'import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.nextLine();\n        int[] last = new int[256];\n        Arrays.fill(last, -1);\n        int best = 0, start = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (last[c] >= start) start = last[c] + 1;\n            last[c] = i;\n            best = Math.max(best, i - start + 1);\n        }\n        System.out.println(best);\n    }\n}'
+      },
+      {
+        id: 'sub_2',
+        studentId: 'usr_ratnaraju',
+        studentName: 'G. Ratnaraju',
+        rollNo: '22H41A0482',
+        questionId: 'cq_easy_2',
+        questionTitle: 'Reverse an Integer',
+        language: 'Python',
+        status: 'Accepted',
+        score: 100,
+        executionTime: '52ms',
+        memory: '7.4 MB',
+        submittedAt: '2026-08-17 20:15',
+        studentCode: 'n = int(input())\nsign = -1 if n < 0 else 1\nrev = int(str(abs(n))[::-1])\nprint(sign * rev)'
+      },
+      {
+        id: 'sub_3',
+        studentId: 'usr_sailakshmi',
+        studentName: 'K. Sai Lakshmi',
+        rollNo: '22H41A0527',
+        questionId: 'cq_easy_1',
+        questionTitle: 'Two Sum',
+        language: 'C++',
+        status: 'Accepted',
+        score: 100,
+        executionTime: '21ms',
+        memory: '6.8 MB',
+        submittedAt: '2026-08-18 09:05',
+        studentCode: '#include <iostream>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    int n, target;\n    cin >> n >> target;\n    unordered_map<int,int> seen;\n    for (int i = 0; i < n; i++) {\n        int x; cin >> x;\n        if (seen.count(target - x)) { cout << seen[target-x] << " " << i; return 0; }\n        seen[x] = i;\n    }\n    return 0;\n}'
+      },
+      {
+        id: 'sub_4',
+        studentId: 'usr_teja',
+        studentName: 'B. Teja',
+        rollNo: '22H41A0534',
+        questionId: 'cq_med_2',
+        questionTitle: '0/1 Knapsack Problem',
+        language: 'Java',
+        status: 'Wrong Answer',
+        score: 60,
+        executionTime: '74ms',
+        memory: '11.6 MB',
+        submittedAt: '2026-08-18 11:30',
+        studentCode: 'import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        // greedy attempt — fails on fractional-value cases\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt(), w = sc.nextInt();\n        System.out.println(0);\n    }\n}'
+      },
+      {
+        id: 'sub_5',
+        studentId: 'usr_ananya',
+        studentName: 'P. Ananya',
+        rollNo: '22H41A0541',
+        questionId: 'cq_easy_3',
+        questionTitle: 'Valid Palindrome',
+        language: 'JavaScript',
+        status: 'Accepted',
+        score: 100,
+        executionTime: '45ms',
+        memory: '8.2 MB',
+        submittedAt: '2026-08-18 13:12',
+        studentCode: 'const s = require("fs").readFileSync(0, "utf-8").trim().toLowerCase().replace(/[^a-z0-9]/g, "");\nconsole.log(s === [...s].reverse().join("") ? "true" : "false");'
+      }
+    ],
+
+    // ----------------- FACULTY: ANNOUNCEMENTS -----------------
+    announcements: [
+      {
+        id: 'anc_1',
+        title: 'Extra Lab Session — Spring Boot Deployment',
+        message: 'An additional hands-on lab on containerised Spring Boot deployment will be conducted on Saturday, 10:00 AM in the Cloud Computing Lab (Block C). Attendance is mandatory for CSE-3A.',
+        target: 'Class CSE-3A',
+        department: 'Computer Science & Engineering (CSE)',
+        subject: 'Advanced Java (CS502)',
+        author: 'Dr. M. S. R. Murthy',
+        date: '2026-08-16'
+      },
+      {
+        id: 'anc_2',
+        title: 'Mid-1 Syllabus Coverage Confirmed',
+        message: 'Mid-1 examinations will cover Units I and II only. Revision classes are scheduled during the last hour from August 26 to August 30.',
+        target: 'III Year Students',
+        department: 'Computer Science & Engineering (CSE)',
+        subject: 'Advanced Java (CS502)',
+        author: 'Dr. M. S. R. Murthy',
+        date: '2026-08-14'
+      },
+      {
+        id: 'anc_3',
+        title: 'CodeQuest Arena Weekly Contest',
+        message: 'Weekly coding contest goes live every Friday 6:00 PM in the CodeQuest Arena. Top three performers earn bonus internal assessment credit.',
+        target: 'All Students',
+        department: 'Computer Science & Engineering (CSE)',
+        subject: 'CodeQuest Arena',
+        author: 'Dr. M. S. R. Murthy',
+        date: '2026-08-10'
+      }
+    ],
+
+    // ----------------- FACULTY: NOTIFICATIONS -----------------
+    facultyNotifications: [
+      {
+        id: 'fnotif_1',
+        category: 'assignment',
+        title: 'New Submission — Assignment 2 (CS503 DBMS)',
+        text: 'P. Ananya (22H41A0541) submitted "Normalization & Query Optimisation". Pending evaluation.',
+        time: '35 minutes ago',
+        sender: 'ERP Assignment Module',
+        unread: true
+      },
+      {
+        id: 'fnotif_2',
+        category: 'attendance',
+        title: 'Attendance Shortage Alert — CSE-3A',
+        text: 'B. Teja (22H41A0534) has dropped to 68.4% attendance. Condonation notice must be issued before Mid-1 hall tickets.',
+        time: '3 hours ago',
+        sender: 'Attendance Monitoring Cell',
+        unread: true
+      },
+      {
+        id: 'fnotif_3',
+        category: 'exam',
+        title: 'Invigilation Duty Allotted — Mid-1',
+        text: 'You are allotted Hall 301 invigilation for CS502 on September 2, 2026 (10:00 AM session). Report by 9:30 AM.',
+        time: '1 day ago',
+        sender: 'Controller of Examinations (Autonomous)',
+        unread: true
+      },
+      {
+        id: 'fnotif_4',
+        category: 'coding',
+        title: 'CodeQuest Activity Summary',
+        text: '5 new code submissions were evaluated by the sandbox in the last 24 hours — 4 Accepted, 1 Wrong Answer.',
+        time: '1 day ago',
+        sender: 'CodeQuest Arena',
+        unread: false
+      },
+      {
+        id: 'fnotif_5',
+        category: 'college',
+        title: 'Faculty Council Meeting — NAAC Documentation',
+        text: 'Department heads and senior faculty are requested to attend the NAAC criteria-III documentation review on Thursday, 3:00 PM in the Board Room.',
+        time: '2 days ago',
+        sender: 'Principal Office',
+        unread: false
+      }
+    ]
   };
 
   class BVCITSDatabase {
