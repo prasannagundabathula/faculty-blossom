@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Login — BVCITS College ERP &amp; CodeQuest Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body style="background: radial-gradient(circle at 10% 20%, rgba(122, 18, 32, 0.15), transparent 40%), radial-gradient(circle at 90% 80%, rgba(217, 162, 39, 0.15), transparent 40%), var(--cream); min-height:100vh; display:flex; flex-direction:column;">
+
+  <!-- Header -->
+  <header style="background:rgba(255,255,255,0.95); border-bottom:1px solid var(--line);">
+    <div class="nav" style="padding:12px 24px;">
+      <a class="brand" href="index.html">
+        <div class="brand-seal-wrap">
+          <img src="images/bvcits_seal.jpg" alt="BVCITS Logo">
+        </div>
+        <div class="brand-text">
+          <div class="name">BVCITS</div>
+          <div class="sub">Autonomous · Amalapuram</div>
+        </div>
+      </a>
+      <a href="index.html" class="cta-btn ghost">← Back to Main Website</a>
+    </div>
+  </header>
+
+  <!-- Centered Login Container -->
+  <main style="flex-grow:1; display:flex; align-items:center; justify-content:center; padding:40px 20px;">
+    <div style="max-width:480px; width:100%; box-shadow:var(--shadow-lg); border-radius:18px; border:2px solid var(--gold); overflow:hidden;">
+      <div id="standaloneLoginContainer"></div>
+    </div>
+  </main>
+
+  <footer style="padding:20px 0; text-align:center; font-size:12px; color:var(--ink-muted); background:var(--maroon-deep);">
+    <div class="wrap">
+      © 2026 BVCITS Autonomous Engineering Institution · Batlapalem, Amalapuram, AP
+    </div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already logged in, redirect to dashboard
+      if (window.BVCITS_AUTH && window.BVCITS_AUTH.isLoggedIn()) {
+        const role = window.BVCITS_AUTH.getUserRole();
+        window.location.href = window.BVCITS_AUTH.getDashboardUrlForRole(role);
+        return;
+      }
+
+      window.BVCITS_AUTH.renderLoginForm('standaloneLoginContainer', (result) => {
+        window.location.href = result.redirectUrl;
+      });
+    });
+  </script>
+</body>
+</html>

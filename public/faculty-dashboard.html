@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Portal — BVCITS Autonomous ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <script>
+    (function () {
+      try {
+        var sKey = 'BVCITS_AUTH_SESSION_V2';
+        var raw = sessionStorage.getItem(sKey) || localStorage.getItem(sKey);
+        if (!raw) {
+          window.location.replace('portal-login.html');
+        } else {
+          var user = JSON.parse(raw);
+          if (!user || (user.role !== 'faculty' && user.role !== 'admin')) {
+            window.location.replace('portal-login.html');
+          }
+        }
+      } catch (e) {
+        window.location.replace('portal-login.html');
+      }
+    })();
+  </script>
+</head>
+<body class="portal-body">
+
+  <div class="portal-wrapper">
+    <!-- ==================== Faculty Sidebar ==================== -->
+    <aside class="portal-sidebar">
+      <div class="sidebar-header">
+        <img src="images/bvcits_seal.jpg" alt="BVCITS Emblem" class="sidebar-logo">
+        <div class="sidebar-brand-text">
+          <div class="brand-title">BVCITS ERP</div>
+          <div class="brand-subtitle">Faculty Console</div>
+          <span class="sidebar-role-pill">Faculty</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Academic Management</div>
+        <a class="sidebar-link active" data-view="dashboard">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a class="sidebar-link" data-view="students">
+          <span class="icon">👥</span>
+          <span>Students</span>
+        </a>
+        <a class="sidebar-link" data-view="attendance">
+          <span class="icon">📅</span>
+          <span>Attendance</span>
+        </a>
+        <a class="sidebar-link" data-view="marks">
+          <span class="icon">📈</span>
+          <span>Performance</span>
+        </a>
+        <a class="sidebar-link" data-view="assignments">
+          <span class="icon">📝</span>
+          <span>Assignments</span>
+        </a>
+        <a class="sidebar-link" data-view="exams">
+          <span class="icon">📅</span>
+          <span>Exams</span>
+        </a>
+
+        <div class="nav-section-label">CodeQuest Arena</div>
+        <a class="sidebar-link" data-view="questions" style="color:var(--portal-gold-light); font-weight:700;">
+          <span class="icon">⚔️</span>
+          <span>Coding Questions</span>
+        </a>
+        <a class="sidebar-link" data-view="submissions">
+          <span class="icon">💻</span>
+          <span>Coding Submissions</span>
+        </a>
+
+        <div class="nav-section-label">Communication &amp; Profile</div>
+        <a class="sidebar-link" data-view="announcements">
+          <span class="icon">📢</span>
+          <span>Announcements</span>
+        </a>
+        <a class="sidebar-link" data-view="notifications">
+          <span class="icon">🔔</span>
+          <span>Notifications</span>
+          <span class="badge-count" id="facultyNotifBadge">3</span>
+        </a>
+        <a class="sidebar-link" data-view="profile">
+          <span class="icon">👤</span>
+          <span>My Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-logout-btn logout-trigger">
+          <span>🚪</span>
+          <span>Logout Portal</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ==================== Faculty Main Content ==================== -->
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="mobileSidebarToggle" aria-label="Toggle Menu">☰</button>
+          <div class="topbar-title-box">
+            <h1 id="pageTitle">Faculty Dashboard</h1>
+            <div class="topbar-breadcrumbs">
+              <span>BVCITS Faculty Portal</span> • <span id="currentBreadcrumb">Dashboard</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-user" onclick="document.querySelector('.sidebar-link[data-view=\\'profile\\']').click();">
+            <img src="images/bvcits_seal.jpg" alt="Faculty Avatar" class="user-avatar">
+            <div class="user-info-text">
+              <span class="user-name" id="topbarUserName">Dr. M. S. R. Murthy</span>
+              <span class="user-sub" id="topbarUserRole">Professor &amp; HOD, CSE</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- View Containers -->
+      <div class="portal-content">
+        <div id="view-dashboard" class="portal-view active"></div>
+        <div id="view-students" class="portal-view"></div>
+        <div id="view-attendance" class="portal-view"></div>
+        <div id="view-marks" class="portal-view"></div>
+        <div id="view-assignments" class="portal-view"></div>
+        <div id="view-exams" class="portal-view"></div>
+        <div id="view-questions" class="portal-view"></div>
+        <div id="view-submissions" class="portal-view"></div>
+        <div id="view-announcements" class="portal-view"></div>
+        <div id="view-notifications" class="portal-view"></div>
+        <div id="view-profile" class="portal-view"></div>
+      </div>
+    </main>
+  </div>
+
+  <div class="portal-toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/faculty-portal.js"></script>
+</body>
+</html>

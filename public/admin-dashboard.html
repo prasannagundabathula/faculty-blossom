@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Command Center — BVCITS College ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <script>
+    (function () {
+      try {
+        var sKey = 'BVCITS_AUTH_SESSION_V2';
+        var raw = sessionStorage.getItem(sKey) || localStorage.getItem(sKey);
+        if (!raw) {
+          window.location.replace('portal-login.html');
+        } else {
+          var user = JSON.parse(raw);
+          if (!user || user.role !== 'admin') {
+            window.location.replace('portal-login.html');
+          }
+        }
+      } catch (e) {
+        window.location.replace('portal-login.html');
+      }
+    })();
+  </script>
+</head>
+<body class="portal-body">
+
+  <div class="portal-wrapper">
+    <!-- ==================== Admin Sidebar ==================== -->
+    <aside class="portal-sidebar">
+      <div class="sidebar-header">
+        <img src="images/bvcits_seal.jpg" alt="BVCITS Emblem" class="sidebar-logo">
+        <div class="sidebar-brand-text">
+          <div class="brand-title">BVCITS ADMIN</div>
+          <div class="brand-subtitle">Institution Command</div>
+          <span class="sidebar-role-pill">Administrator</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Institutional Management</div>
+        <a class="sidebar-link active" data-view="dashboard">
+          <span class="icon">📊</span>
+          <span>Overview KPIs</span>
+        </a>
+        <a class="sidebar-link" data-view="users">
+          <span class="icon">👥</span>
+          <span>User Accounts</span>
+        </a>
+        <a class="sidebar-link" data-view="departments">
+          <span class="icon">🏛</span>
+          <span>12 Departments</span>
+        </a>
+
+        <div class="nav-section-label">Platform Controls</div>
+        <a class="sidebar-link" data-view="codequest-admin" style="color:var(--portal-gold-light); font-weight:700;">
+          <span class="icon">⚔️</span>
+          <span>CodeQuest Bank</span>
+        </a>
+        <a class="sidebar-link" data-view="reports">
+          <span class="icon">📥</span>
+          <span>Reports &amp; Exports</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-logout-btn logout-trigger">
+          <span>🚪</span>
+          <span>Logout Portal</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ==================== Admin Main Content ==================== -->
+    <main class="portal-main">
+      <header class="portal-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="mobileSidebarToggle" aria-label="Toggle Menu">☰</button>
+          <div class="topbar-title-box">
+            <h1 id="pageTitle">Admin Command Center</h1>
+            <div class="topbar-breadcrumbs">
+              <span>BVCITS Admin</span> • <span id="currentBreadcrumb">Overview</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-user">
+            <img src="images/bvcits_seal.jpg" alt="Admin Avatar" class="user-avatar">
+            <div class="user-info-text">
+              <span class="user-name" id="topbarUserName">Central Administration</span>
+              <span class="user-sub" id="topbarUserRole">Principal Office</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="portal-content">
+        <div id="view-dashboard" class="portal-view active"></div>
+        <div id="view-users" class="portal-view"></div>
+        <div id="view-departments" class="portal-view"></div>
+        <div id="view-codequest-admin" class="portal-view"></div>
+        <div id="view-reports" class="portal-view"></div>
+      </div>
+    </main>
+  </div>
+
+  <div class="portal-toast-container"></div>
+
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin-portal.js"></script>
+</body>
+</html>

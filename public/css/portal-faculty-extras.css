@@ -1,0 +1,196 @@
+/* Append to portal.css: Faculty Portal Specific Components & Modals */
+
+/* Modal Overlays for Faculty Inspector */
+.faculty-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.faculty-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.faculty-modal-content {
+  background: #FFFFFF;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid #E2E8F0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopIn {
+  from { transform: scale(0.95) translateY(10px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.faculty-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFC;
+  border-radius: 16px 16px 0 0;
+}
+
+.faculty-modal-header h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--portal-maroon);
+  margin: 0;
+}
+
+.faculty-modal-close {
+  background: #E2E8F0;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.faculty-modal-close:hover {
+  background: #CBD5E1;
+  color: #0F172A;
+}
+
+.faculty-modal-body {
+  padding: 24px;
+}
+
+/* Tab Navigation in Student Profile Modal */
+.modal-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #E2E8F0;
+  margin-bottom: 20px;
+}
+
+.modal-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #64748B;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+
+.modal-tab-btn.active {
+  color: var(--portal-maroon);
+  border-bottom-color: var(--portal-maroon);
+}
+
+.modal-tab-pane {
+  display: none;
+}
+
+.modal-tab-pane.active {
+  display: block;
+}
+
+/* Syntax / Code Viewer Modal */
+.code-viewer-block {
+  background: #0D1117;
+  color: #E6EDF3;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  max-height: 400px;
+  overflow: auto;
+  border: 1px solid #30363D;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Analytics Cards */
+.analytics-metric-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.analytics-bar-track {
+  flex-grow: 1;
+  height: 10px;
+  background: #E2E8F0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.analytics-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.8s ease;
+}
+
+.analytics-bar-fill.good {
+  background: linear-gradient(90deg, #10B981, #059669);
+}
+
+.analytics-bar-fill.warning {
+  background: linear-gradient(90deg, #F59E0B, #D97706);
+}
+
+.analytics-bar-fill.danger {
+  background: linear-gradient(90deg, #EF4444, #DC2626);
+}
+
+/* Low Attendance Warning Box */
+.warning-callout-box {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-left: 4px solid #EF4444;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.warning-callout-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #991B1B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.warning-callout-text {
+  font-size: 13px;
+  color: #7F1D1D;
+  line-height: 1.5;
+}
