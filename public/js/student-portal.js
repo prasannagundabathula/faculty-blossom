@@ -89,7 +89,11 @@
 
     if (topbarUserName) topbarUserName.textContent = user.fullName;
     if (topbarUserRole) topbarUserRole.textContent = `${user.deptCode || user.department} • ${user.rollNo}`;
-    if (topbarAvatar && user.avatar) topbarAvatar.src = user.avatar;
+    if (topbarAvatar) {
+      topbarAvatar.src = window.BVCITSPhotos.resolve(user);
+      topbarAvatar.onerror = () => window.BVCITSPhotos.handleError(topbarAvatar, window.BVCITSPhotos.fallbackChain(user));
+    }
+
 
     if (attPill) {
       attPill.innerHTML = `<span>📊 Att: <strong>${attendance.overall}%</strong></span>`;
@@ -223,7 +227,7 @@
       <div class="dashboard-hero-banner">
         <div class="hero-student-profile">
           <div class="hero-avatar-wrap">
-            <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" class="hero-avatar">
+            ${window.BVCITSPhotos.imgTag(user, 'hero-avatar')}
             <span class="online-indicator" title="Student Session Active"></span>
           </div>
           <div class="hero-profile-meta">
@@ -1329,16 +1333,22 @@ ${sc.expectedOutput}</div>
         <div class="profile-layout-grid" style="display:grid; grid-template-columns:260px 1fr; gap:32px; align-items:start; margin-top:20px;">
           <!-- Profile Badge Card -->
           <div style="background:var(--portal-cream); border:1px solid var(--portal-border); border-radius:12px; padding:24px; text-align:center;">
-            <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid var(--portal-gold); margin-bottom:12px;">
+            ${window.BVCITSPhotos.imgTag(user, '', 'width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid var(--portal-gold); margin-bottom:12px;', 'id="studentProfilePhoto"')}
             <h4 style="font-family:'Fraunces', serif; font-size:19px; color:var(--portal-maroon); margin:0 0 4px;">${user.fullName}</h4>
             <div style="font-size:13px; font-weight:700; color:var(--portal-ink-muted);">${user.rollNo}</div>
+            <div style="margin-top:6px; font-size:12px; color:var(--portal-ink-soft);">${user.deptCode || user.department} • ${user.year || ''}</div>
             <div style="margin-top:12px;">
               <span class="attendance-badge good">Status: ${user.status}</span>
+            </div>
+            <div style="margin-top:12px;">
+              <label for="studentPhotoInput" class="portal-btn outline sm" style="cursor:pointer; font-size:11px; padding:6px 10px;">📷 Change Photo</label>
+              <input type="file" id="studentPhotoInput" accept="image/*" style="display:none;">
             </div>
             <div style="margin-top:16px; font-size:12px; color:var(--portal-ink-soft); line-height:1.5;">
               ${user.program || user.department}<br>
               <strong>BVCITS Amalapuram</strong>
             </div>
+
           </div>
 
           <!-- Detailed Information Grid -->
@@ -1391,7 +1401,13 @@ ${sc.expectedOutput}</div>
         </div>
       </div>
     `;
+
+    // Bind the per-user photo uploader (persisted in the local ERP database)
+    window.BVCITSPhotos.bindUploader('studentPhotoInput', 'studentProfilePhoto', user.id, () => {
+      showToast('✅ Profile photo updated for ' + user.fullName);
+    });
   }
+
 
   /* ==========================================================================
      Notification Dropdown Setup & Toast Helper

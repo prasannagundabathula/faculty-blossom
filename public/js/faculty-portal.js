@@ -53,6 +53,12 @@
     const roleEl = document.getElementById('topbarUserRole');
     if (nameEl) nameEl.textContent = user.fullName;
     if (roleEl) roleEl.textContent = `${user.designation || 'Faculty'} (${user.department || 'CSE'})`;
+    const topAvatar = document.querySelector('.topbar-user .user-avatar');
+    if (topAvatar) {
+      topAvatar.src = window.BVCITSPhotos.resolve(user);
+      topAvatar.onerror = () => window.BVCITSPhotos.handleError(topAvatar, window.BVCITSPhotos.fallbackChain(user));
+    }
+
 
     // Mobile Sidebar Toggle
     const mobileBtn = document.getElementById('mobileSidebarToggle');
@@ -160,7 +166,7 @@
       <!-- Top Faculty Profile Banner -->
       <div class="dashboard-hero-banner">
         <div class="hero-student-profile">
-          <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" class="hero-avatar">
+          ${window.BVCITSPhotos.imgTag(user, 'hero-avatar')}
           <div class="hero-profile-meta">
             <h2>Faculty Portal — ${user.fullName}</h2>
             <div class="hero-tags-row">
@@ -542,7 +548,7 @@
           <tr>
             <td>
               <div style="display:flex; align-items:center; gap:10px;">
-                <img src="${st.avatar || 'images/bvcits_seal.jpg'}" alt="${st.fullName}" style="width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid #CBD5E1;">
+                ${window.BVCITSPhotos.imgTag(st, '', 'width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid #CBD5E1;')}
                 <div>
                   <strong>${st.fullName}</strong>
                   <div style="font-size:11.5px; color:#64748B;">${st.email}</div>
@@ -595,7 +601,7 @@
       <div class="faculty-modal-content">
         <div class="faculty-modal-header">
           <div style="display:flex; align-items:center; gap:12px;">
-            <img src="${st.avatar || 'images/bvcits_seal.jpg'}" alt="${st.fullName}" style="width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);">
+            ${window.BVCITSPhotos.imgTag(st, '', 'width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);')}
             <div>
               <h3>${st.fullName} — ${st.rollNo}</h3>
               <span style="font-size:12px; color:#64748B;">${st.program} · ${st.year} (${st.section})</span>
@@ -805,7 +811,7 @@
                   <td><strong>${st.rollNo}</strong></td>
                   <td>
                     <div style="display:flex; align-items:center; gap:8px;">
-                      <img src="${st.avatar || 'images/bvcits_seal.jpg'}" alt="${st.fullName}" style="width:28px; height:28px; border-radius:50%; object-fit:cover;">
+                      ${window.BVCITSPhotos.imgTag(st, '', 'width:28px; height:28px; border-radius:50%; object-fit:cover;')}
                       <span>${st.fullName}</span>
                     </div>
                   </td>
@@ -1787,12 +1793,18 @@
 
         <form id="facultyProfileForm">
           <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px; padding:16px; background:#F8FAFC; border-radius:10px; border:1px solid #E2E8F0;">
-            <img src="${user.avatar || 'images/bvcits_seal.jpg'}" alt="${user.fullName}" style="width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);">
+            ${window.BVCITSPhotos.imgTag(user, '', 'width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid var(--portal-gold);', 'id="facultyProfilePhoto"')}
             <div>
               <h3 style="margin:0; font-size:18px; color:var(--portal-maroon);">${user.fullName}</h3>
               <div style="font-size:13px; color:#64748B;">Employee ID: <strong>${user.employeeId || 'FAC001'}</strong> · ${user.designation} (${user.department})</div>
+              <div style="font-size:12px; color:#64748B; margin-top:2px;">${user.email}</div>
+              <div style="margin-top:8px;">
+                <label for="facultyPhotoInput" class="portal-btn outline sm" style="cursor:pointer; font-size:11px; padding:6px 10px;">📷 Change Photo</label>
+                <input type="file" id="facultyPhotoInput" accept="image/*" style="display:none;">
+              </div>
             </div>
           </div>
+
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
             <div>
@@ -1837,7 +1849,13 @@
       </div>
     `;
 
+    // Bind the per-user photo uploader (persisted in the local ERP database)
+    window.BVCITSPhotos.bindUploader('facultyPhotoInput', 'facultyProfilePhoto', user.id, () => {
+      showToast('✅ Profile photo updated for ' + user.fullName);
+    });
+
     const form = container.querySelector('#facultyProfileForm');
+
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
