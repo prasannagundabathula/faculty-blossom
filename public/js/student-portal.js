@@ -1401,7 +1401,13 @@ ${sc.expectedOutput}</div>
         </div>
       </div>
     `;
+
+    // Bind the per-user photo uploader (persisted in the local ERP database)
+    window.BVCITSPhotos.bindUploader('studentPhotoInput', 'studentProfilePhoto', user.id, () => {
+      showToast('✅ Profile photo updated for ' + user.fullName);
+    });
   }
+
 
   /* ==========================================================================
      Notification Dropdown Setup & Toast Helper
