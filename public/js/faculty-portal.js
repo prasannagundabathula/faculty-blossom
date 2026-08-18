@@ -1849,7 +1849,13 @@
       </div>
     `;
 
+    // Bind the per-user photo uploader (persisted in the local ERP database)
+    window.BVCITSPhotos.bindUploader('facultyPhotoInput', 'facultyProfilePhoto', user.id, () => {
+      showToast('✅ Profile photo updated for ' + user.fullName);
+    });
+
     const form = container.querySelector('#facultyProfileForm');
+
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
