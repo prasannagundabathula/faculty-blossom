@@ -1,48 +1,63 @@
-# Faculty Dashboard Fix
+Project Name:
+BVCITS Faculty Dashboard
 
-In the existing BVCITS website, the Faculty Dashboard has several empty sections.
+About:
+The BVCITS Faculty Dashboard is a modern, user-friendly web interface designed for faculty members to access and manage important academic activities from a single dashboard. The project maintains the existing BVCITS branding, design, and layout.
 
-Please fix ONLY these existing Faculty Dashboard sections:
+Features:
+- Assignments Management
+- Exams Information
+- Coding Submissions
+- Announcements
+- Notifications
+- Faculty Dashboard
+- Responsive Design
+- Interactive Dashboard Sections
+- Demo Data and Local Storage Support
 
-📝 Assignments
-📅 Exams
-💻 Coding Submissions
-📢 Announcements
-🔔 Notifications
+Technologies Used:
+- React
+- TypeScript
+- JavaScript
+- HTML
+- CSS
+- Tailwind CSS
 
-They currently appear empty even though the UI/options are already present.
+Project Structure:
+- src/ – Main application source code
+- public/ – Public assets and resources
+- package.json – Project dependencies and scripts
 
-Inspect the existing Faculty Dashboard code and data/localStorage logic, find the reason they are empty, and fix it.
+Getting Started:
 
-Make these sections display realistic demo data and make the existing buttons/actions work.
+Prerequisites:
+Node.js and npm should be installed.
 
-Keep the existing Faculty Dashboard design, layout, colors, sidebar and branding exactly the same.
+Installation:
 
-Do NOT redesign or create a new Faculty Dashboard.
-Do NOT change other parts of the website.
-Do NOT add a backend.
+git clone https://github.com/prasannagundabathula/faculty-blossom.git
 
-Also fix any JavaScript errors causing these sections to remain empty.
+cd faculty-blossom
 
-This project was built with [Lovable](https://lovable.dev).
+npm install
 
-**Live app**: https://faculty-blossom.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ffc191dd-2677-4488-bedc-27c34e0ddf8d).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
 npm run dev
-```
+
+Project Goal:
+The goal of this project is to provide faculty members with a simple, organized dashboard for accessing academic information and managing common faculty activities.
+
+Future Enhancements:
+- Faculty authentication
+- Student management
+- Backend integration
+- Database connectivity
+- Role-based access
+- Real-time notifications
+
+Institution:
+Bonam Venkata Chalamayya Institute of Technology and Science (BVCITS)
+
+Purpose:
+This project is developed as an academic project for educational purposes.
+
+
