@@ -89,7 +89,11 @@
 
     if (topbarUserName) topbarUserName.textContent = user.fullName;
     if (topbarUserRole) topbarUserRole.textContent = `${user.deptCode || user.department} • ${user.rollNo}`;
-    if (topbarAvatar && user.avatar) topbarAvatar.src = user.avatar;
+    if (topbarAvatar) {
+      topbarAvatar.src = window.BVCITSPhotos.resolve(user);
+      topbarAvatar.onerror = () => window.BVCITSPhotos.handleError(topbarAvatar, window.BVCITSPhotos.fallbackChain(user));
+    }
+
 
     if (attPill) {
       attPill.innerHTML = `<span>📊 Att: <strong>${attendance.overall}%</strong></span>`;
