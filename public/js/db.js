@@ -1264,6 +1264,177 @@
         this.saveDatabase();
       }
     }
+
+    getNotificationsForUser(userId) {
+      const own = this.data.notifications && this.data.notifications[userId];
+      if (own && own.length) return own;
+      return this.data.facultyNotifications || [];
+    }
+
+    // ----------------- ASSIGNMENT METHODS -----------------
+    getAssignments(subjectCode) {
+      const all = this.data.assignments || [];
+      if (!subjectCode || subjectCode === 'all') return all;
+      return all.filter(a => a.subjectCode === subjectCode);
+    }
+
+    addAssignment(asg) {
+      if (!Array.isArray(this.data.assignments)) this.data.assignments = [];
+      const record = {
+        id: 'asg_' + Date.now(),
+        createdAt: new Date().toISOString().slice(0, 10),
+        submissions: [],
+        assignedClass: 'CSE-3A',
+        description: '',
+        instructions: '',
+        maxMarks: 10,
+        ...asg
+      };
+      this.data.assignments.unshift(record);
+      this.saveDatabase();
+      return record;
+    }
+
+    deleteAssignment(asgId) {
+      this.data.assignments = (this.data.assignments || []).filter(a => a.id !== asgId);
+      this.saveDatabase();
+    }
+
+    gradeAssignmentSubmission(asgId, studentId, marks, feedback) {
+      const asg = (this.data.assignments || []).find(a => a.id === asgId);
+      if (!asg) return null;
+      const sub = (asg.submissions || []).find(s => s.studentId === studentId);
+      if (!sub) return null;
+      sub.marks = marks;
+      sub.feedback = feedback;
+      sub.gradedAt = new Date().toISOString().slice(0, 10);
+      this.saveDatabase();
+      return sub;
+    }
+
+    // ----------------- EXAM METHODS -----------------
+    getExams() {
+      return this.data.exams || [];
+    }
+
+    addExam(exam) {
+      if (!Array.isArray(this.data.exams)) this.data.exams = [];
+      const record = { id: 'exam_' + Date.now(), ...exam };
+      this.data.exams.unshift(record);
+      this.saveDatabase();
+      return record;
+    }
+
+    deleteExam(examId) {
+      this.data.exams = (this.data.exams || []).filter(e => e.id !== examId);
+      this.saveDatabase();
+    }
+
+    // ----------------- CODING SUBMISSION METHODS -----------------
+    getSubmissions(studentId) {
+      const all = this.data.submissions || [];
+      if (!studentId) return all;
+      return all.filter(s => s.studentId === studentId);
+    }
+
+    addSubmission(sub) {
+      if (!Array.isArray(this.data.submissions)) this.data.submissions = [];
+      const record = { id: 'sub_' + Date.now(), status: 'Accepted', score: 100, ...sub };
+      this.data.submissions.unshift(record);
+      this.saveDatabase();
+      return record;
+    }
+
+    // ----------------- ANNOUNCEMENT METHODS -----------------
+    getAnnouncements() {
+      return this.data.announcements || [];
+    }
+
+    broadcastAnnouncement(anc) {
+      if (!Array.isArray(this.data.announcements)) this.data.announcements = [];
+      const record = {
+        id: 'anc_' + Date.now(),
+        date: new Date().toISOString().slice(0, 10),
+        ...anc
+      };
+      this.data.announcements.unshift(record);
+
+      // Push the notice into every student's notification feed
+      const notifCard = {
+        id: 'notif_' + Date.now(),
+        category: 'college',
+        categoryLabel: 'College Announcement',
+        title: record.title,
+        text: record.message,
+        time: 'Just now',
+        sender: record.author || 'Faculty',
+        unread: true
+      };
+      if (!this.data.notifications) this.data.notifications = {};
+      (this.data.users || []).filter(u => u.role === 'student').forEach(st => {
+        if (!Array.isArray(this.data.notifications[st.id])) this.data.notifications[st.id] = [];
+        this.data.notifications[st.id].unshift({ ...notifCard, id: notifCard.id + '_' + st.id });
+      });
+
+      this.saveDatabase();
+      return record;
+    }
+
+    // ----------------- CODING QUESTION MANAGEMENT -----------------
+    addCodingQuestion(question) {
+      if (!Array.isArray(this.data.codingQuestions)) this.data.codingQuestions = [];
+      const record = { id: 'cq_' + Date.now(), ...question };
+      this.data.codingQuestions.push(record);
+      this.saveDatabase();
+      return record;
+    }
+
+    deleteCodingQuestion(qId) {
+      this.data.codingQuestions = (this.data.codingQuestions || []).filter(q => q.id !== qId);
+      this.saveDatabase();
+    }
+
+    // ----------------- FACULTY WRITE-BACK HELPERS -----------------
+    updateStudentAttendance(studentId, subjectCode, isPresent) {
+      const att = this.data.attendance && this.data.attendance[studentId];
+      if (!att) return null;
+      const subject = (att.subjects || []).find(s => s.code === subjectCode);
+      if (subject) {
+        subject.total = (subject.total || 0) + 1;
+        if (isPresent) subject.attended = (subject.attended || 0) + 1;
+        subject.percentage = parseFloat((((subject.attended || 0) / subject.total) * 100).toFixed(1));
+      }
+      att.totalClasses = (att.totalClasses || 0) + 1;
+      if (isPresent) att.attendedClasses = (att.attendedClasses || 0) + 1;
+      att.missedClasses = att.totalClasses - att.attendedClasses;
+      att.overall = parseFloat(((att.attendedClasses / att.totalClasses) * 100).toFixed(1));
+      this.saveDatabase();
+      return att;
+    }
+
+    saveSubjectMarks(studentId, subjectCode, values) {
+      const marks = this.data.marks && this.data.marks[studentId];
+      if (!marks) return null;
+      const subject = (marks.currentSemesterSubjects || []).find(s => s.code === subjectCode);
+      if (!subject) return null;
+      if (values.mid1 !== undefined) subject.mid1 = values.mid1;
+      if (values.mid2 !== undefined) subject.mid2 = values.mid2;
+      if (values.assignment !== undefined) subject.assignmentMarks = values.assignment;
+      if (values.lab !== undefined) subject.labMarks = values.lab;
+      if (values.endSem !== undefined) subject.endSem = values.endSem;
+      subject.internalMarks = Math.round(((subject.mid1 || 0) + (subject.mid2 || 0)) / 2);
+      subject.total = (subject.internalMarks || 0) + (subject.assignmentMarks || 0) + (subject.endSem || 0);
+      this.saveDatabase();
+      return subject;
+    }
+
+    updateFacultyProfile(userId, updates) {
+      const user = this.getUserById(userId);
+      if (!user) return null;
+      Object.assign(user, updates);
+      this.saveDatabase();
+      return user;
+    }
   }
 
   // Attach singleton to window
